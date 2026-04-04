@@ -535,6 +535,8 @@ section { padding: 6rem 5%; }
   border-radius: 1.25rem;
   overflow: hidden;
   transition: transform var(--transition), box-shadow var(--transition);
+  text-decoration: none;
+  color: inherit;
 }
 
 .portfolio-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
