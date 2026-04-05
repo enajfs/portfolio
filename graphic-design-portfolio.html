@@ -7,7 +7,6 @@
   <meta name="description" content="Graphic design portfolio — social media designs by Baby Jane Seño of Seño Digital Studio.">
   <link rel="stylesheet" href="/portfolio/styles.css" />
   <style>
-    /* ── BACK BUTTON ── */
     .back-btn {
       display: inline-flex;
       align-items: center;
@@ -21,7 +20,6 @@
     }
     .back-btn:hover { gap: 0.75rem; }
 
-    /* ── PROJECT CARD ── */
     .project-card {
       background: var(--white);
       border: 1px solid var(--border);
@@ -88,27 +86,23 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      transition: background var(--transition), transform var(--transition);
+      transition: background var(--transition);
     }
 
-    .project-toggle svg {
-      transition: transform var(--transition);
-    }
-
+    .project-toggle svg { transition: transform var(--transition); }
     .project-card.open .project-toggle { background: var(--cobalt); }
     .project-card.open .project-toggle svg { transform: rotate(180deg); }
     .project-card.open .project-toggle svg path { stroke: white; }
 
-    /* ── PROJECT BODY ── */
     .project-body {
       display: none;
-      padding: 0 2.5rem 2.5rem;
+      padding: 1.5rem 2.5rem 2.5rem;
       border-top: 1px solid var(--border);
     }
 
     .project-card.open .project-body { display: block; }
 
-      .drive-btn {
+    .drive-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
@@ -120,16 +114,15 @@
       padding: 0.75rem 1.5rem;
       border-radius: 100px;
       text-decoration: none;
+      margin-bottom: 1.5rem;
       transition: background var(--transition), border-color var(--transition), transform var(--transition);
     }
     .drive-btn:hover { background: var(--cobalt-light); border-color: var(--cobalt); transform: translateY(-1px); }
 
-    /* ── IMAGE GRID ── */
     .image-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
-      margin: 1.5rem 0 2rem;
     }
 
     .image-item {
@@ -154,29 +147,11 @@
       position: absolute;
       inset: 0;
       background: rgba(0, 71, 171, 0);
-      display: flex;
-      align-items: center;
-      justify-content: center;
       transition: background var(--transition);
     }
 
     .image-item:hover .img-overlay { background: rgba(0, 71, 171, 0.15); }
 
-    .image-placeholder {
-      width: 100%; height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      color: var(--cobalt);
-      font-size: 0.75rem;
-      font-weight: 600;
-      opacity: 0.5;
-    }
-
-  
-    /* ── LIGHTBOX ── */
     .lightbox {
       display: none;
       position: fixed;
@@ -201,20 +176,6 @@
       object-fit: cover;
       border-radius: 1rem;
       display: block;
-    }
-
-    .lightbox-placeholder {
-      width: 100%;
-      aspect-ratio: 4/5;
-      background: var(--cobalt-light);
-      border-radius: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--cobalt);
-      font-size: 1rem;
-      font-weight: 600;
-      opacity: 0.6;
     }
 
     .lightbox-close {
@@ -269,7 +230,7 @@
     @media (max-width: 600px) {
       .image-grid { grid-template-columns: repeat(2, 1fr); }
       .project-header { padding: 1.5rem; }
-      .project-body { padding: 0 1.5rem 1.5rem; }
+      .project-body { padding: 1.5rem; }
     }
   </style>
 </head>
@@ -338,35 +299,31 @@
       </div>
     </div>
     <div class="project-body">
-      <div class="image-grid" id="grid-1">
-        <!-- Replace src with your actual image paths once uploaded to GitHub -->
-        <!-- Example: src="/portfolio/assets/graphic-design/quote-card-1.jpg" -->
-        <div class="image-item" onclick="openLightbox(0, 'project1')">
-  <img src="/portfolio/assets/graphic_design/quote-card-1.png" alt="Quote Card 1" />
-  <div class="img-overlay"></div>
-</div>
-        <div class="image-item" onclick="openLightbox(0, 'project1')">
-  <img src="/portfolio/assets/graphic_design/quote-card-2.png" alt="Quote Card 2" />
-  <div class="img-overlay"></div>
-</div>
-        <div class="image-item" onclick="openLightbox(0, 'project1')">
-  <img src="/portfolio/assets/graphic_design/quote-card-3.png" alt="Quote Card 3" />
-  <div class="img-overlay"></div>
-</div>
-        <div class="image-item" onclick="openLightbox(0, 'project1')">
-  <img src="/portfolio/assets/graphic_design/quote-card-4.png" alt="Quote Card 3" />
-  <div class="img-overlay"></div>
-</div>
-       <div class="image-item" onclick="openLightbox(0, 'project1')">
-  <img src="/portfolio/assets/graphic_design/quote-card-5.png" alt="Quote Card 4" />
-  <div class="img-overlay"></div>
-</div>
-          <div class="img-overlay"></div>
-        </div>
-      </div>
       <a href="https://drive.google.com/drive/folders/10cDt92djXMUKCZxwWysRN973Xv8mFeis?usp=sharing" target="_blank" class="drive-btn">
         View More on Google Drive
       </a>
+      <div class="image-grid">
+        <div class="image-item" onclick="openLightbox(0, 'project1')">
+          <img src="/portfolio/assets/graphic_design/quote-card-1.png" alt="Quote Card 1" />
+          <div class="img-overlay"></div>
+        </div>
+        <div class="image-item" onclick="openLightbox(1, 'project1')">
+          <img src="/portfolio/assets/graphic_design/quote-card-2.png" alt="Quote Card 2" />
+          <div class="img-overlay"></div>
+        </div>
+        <div class="image-item" onclick="openLightbox(2, 'project1')">
+          <img src="/portfolio/assets/graphic_design/quote-card-3.png" alt="Quote Card 3" />
+          <div class="img-overlay"></div>
+        </div>
+        <div class="image-item" onclick="openLightbox(3, 'project1')">
+          <img src="/portfolio/assets/graphic_design/quote-card-4.png" alt="Quote Card 4" />
+          <div class="img-overlay"></div>
+        </div>
+        <div class="image-item" onclick="openLightbox(4, 'project1')">
+          <img src="/portfolio/assets/graphic_design/quote-card-5.png" alt="Quote Card 5" />
+          <div class="img-overlay"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -392,41 +349,39 @@
       </div>
     </div>
     <div class="project-body">
-      <div class="image-grid" id="grid-2">
-        <!-- Replace src with your actual image paths once uploaded to GitHub -->
-        <!-- Example: src="/portfolio/assets/graphic-design/new-arrival-1.jpg" -->
-       <div class="image-item" onclick="openLightbox(0, 'project1')">
-  <img src="/portfolio/assets/graphic_design/new-arrival-1.png" alt="Quote Card 1" />
-  <div class="img-overlay"></div>
-</div>
-       <div class="image-item" onclick="openLightbox(0, 'project1')">
-  <img src="/portfolio/assets/graphic_design/new-arrival-2.png" alt="Quote Card 2" />
-  <div class="img-overlay"></div>
-</div>
-        <div class="image-item" onclick="openLightbox(0, 'project1')">
-  <img src="/portfolio/assets/graphic_design/new-arrival-3.png" alt="Quote Card 3" />
-  <div class="img-overlay"></div>
-</div>
-       <div class="image-item" onclick="openLightbox(0, 'project1')">
-  <img src="/portfolio/assets/graphic_design/new-arrival-4.png" alt="Quote Card 4" />
-  <div class="img-overlay"></div>
-</div>
-        <div class="image-item" onclick="openLightbox(0, 'project1')">
-  <img src="/portfolio/assets/graphic_design/new-arrival-5.png" alt="Quote Card 5" />
-  <div class="img-overlay"></div>
-</div>
-        <div class="image-item" onclick="openLightbox(0, 'project1')">
-  <img src="/portfolio/assets/graphic_design/new-arrival-6.png" alt="Quote Card 6" />
-  <div class="img-overlay"></div>
-</div>
-        <div class="image-item" onclick="openLightbox(0, 'project1')">
-  <img src="/portfolio/assets/graphic_design/new-arrival-7.png" alt="Quote Card 7" />
-  <div class="img-overlay"></div>
-</div>
-      </div>
       <a href="https://drive.google.com/drive/folders/10cDt92djXMUKCZxwWysRN973Xv8mFeis?usp=sharing" target="_blank" class="drive-btn">
-        📁 View Full Project on Google Drive
+        View More on Google Drive
       </a>
+      <div class="image-grid">
+        <div class="image-item" onclick="openLightbox(0, 'project2')">
+          <img src="/portfolio/assets/graphic_design/new-arrival-1.png" alt="New Arrival 1" />
+          <div class="img-overlay"></div>
+        </div>
+        <div class="image-item" onclick="openLightbox(1, 'project2')">
+          <img src="/portfolio/assets/graphic_design/new-arrival-2.png" alt="New Arrival 2" />
+          <div class="img-overlay"></div>
+        </div>
+        <div class="image-item" onclick="openLightbox(2, 'project2')">
+          <img src="/portfolio/assets/graphic_design/new-arrival-3.png" alt="New Arrival 3" />
+          <div class="img-overlay"></div>
+        </div>
+        <div class="image-item" onclick="openLightbox(3, 'project2')">
+          <img src="/portfolio/assets/graphic_design/new-arrival-4.png" alt="New Arrival 4" />
+          <div class="img-overlay"></div>
+        </div>
+        <div class="image-item" onclick="openLightbox(4, 'project2')">
+          <img src="/portfolio/assets/graphic_design/new-arrival-5.png" alt="New Arrival 5" />
+          <div class="img-overlay"></div>
+        </div>
+        <div class="image-item" onclick="openLightbox(5, 'project2')">
+          <img src="/portfolio/assets/graphic_design/new-arrival-6.png" alt="New Arrival 6" />
+          <div class="img-overlay"></div>
+        </div>
+        <div class="image-item" onclick="openLightbox(6, 'project2')">
+          <img src="/portfolio/assets/graphic_design/new-arrival-7.png" alt="New Arrival 7" />
+          <div class="img-overlay"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -465,24 +420,30 @@
 
 <script src="/portfolio/main.js"></script>
 <script>
-  // Project expand/collapse
   function toggleProject(id) {
     const card = document.getElementById(id);
     card.classList.toggle('open');
   }
 
-  // Lightbox
   let currentIndex = 0;
   let currentProject = '';
 
   const projects = {
     project1: [
-      // Replace these with actual image paths after uploading to GitHub
-      // Example: '/portfolio/assets/graphic-design/quote-card-1.jpg'
-      null, null, null, null, null
+      '/portfolio/assets/graphic_design/quote-card-1.png',
+      '/portfolio/assets/graphic_design/quote-card-2.png',
+      '/portfolio/assets/graphic_design/quote-card-3.png',
+      '/portfolio/assets/graphic_design/quote-card-4.png',
+      '/portfolio/assets/graphic_design/quote-card-5.png'
     ],
     project2: [
-      null, null, null, null, null, null, null
+      '/portfolio/assets/graphic_design/new-arrival-1.png',
+      '/portfolio/assets/graphic_design/new-arrival-2.png',
+      '/portfolio/assets/graphic_design/new-arrival-3.png',
+      '/portfolio/assets/graphic_design/new-arrival-4.png',
+      '/portfolio/assets/graphic_design/new-arrival-5.png',
+      '/portfolio/assets/graphic_design/new-arrival-6.png',
+      '/portfolio/assets/graphic_design/new-arrival-7.png'
     ]
   };
 
@@ -504,13 +465,7 @@
     const total = images.length;
     const src = images[currentIndex];
     const content = document.getElementById('lightbox-content');
-
-    if (src) {
-      content.innerHTML = `<img src="${src}" class="lightbox-img" alt="Project image ${currentIndex + 1}" />`;
-    } else {
-      content.innerHTML = `<div class="lightbox-placeholder">📷 Upload image to GitHub to display here</div>`;
-    }
-
+    content.innerHTML = `<img src="${src}" class="lightbox-img" alt="Project image ${currentIndex + 1}" />`;
     document.getElementById('lightbox-counter').textContent =
       `${projectNames[currentProject]} — ${currentIndex + 1} / ${total}`;
   }
