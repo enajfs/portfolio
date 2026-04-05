@@ -108,6 +108,22 @@
 
     .project-card.open .project-body { display: block; }
 
+      .drive-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--off-white);
+      border: 1.5px solid var(--border);
+      color: var(--cobalt);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .drive-btn:hover { background: var(--cobalt-light); border-color: var(--cobalt); transform: translateY(-1px); }
+
     /* ── IMAGE GRID ── */
     .image-grid {
       display: grid;
@@ -159,22 +175,7 @@
       opacity: 0.5;
     }
 
-    .drive-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--off-white);
-      border: 1.5px solid var(--border);
-      color: var(--cobalt);
-      font-weight: 600;
-      font-size: 0.9rem;
-      padding: 0.75rem 1.5rem;
-      border-radius: 100px;
-      text-decoration: none;
-      transition: background var(--transition), border-color var(--transition), transform var(--transition);
-    }
-    .drive-btn:hover { background: var(--cobalt-light); border-color: var(--cobalt); transform: translateY(-1px); }
-
+  
     /* ── LIGHTBOX ── */
     .lightbox {
       display: none;
@@ -364,7 +365,7 @@
         </div>
       </div>
       <a href="https://drive.google.com/drive/folders/10cDt92djXMUKCZxwWysRN973Xv8mFeis?usp=sharing" target="_blank" class="drive-btn">
-        📁 View Full Project on Google Drive
+        View More on Google Drive
       </a>
     </div>
   </div>
