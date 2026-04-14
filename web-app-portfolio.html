@@ -202,6 +202,87 @@
       opacity: 0.75;
     }
 
+    .image-item .img-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 71, 171, 0);
+      transition: background var(--transition);
+    }
+    .image-item:hover .img-overlay { background: rgba(0, 71, 171, 0.15); }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 15, 44, 0.92);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .lightbox.open { display: flex; }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: 700px;
+      width: 100%;
+    }
+
+    .lightbox-img {
+      width: 100%;
+      border-radius: 1rem;
+      display: block;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -1rem; right: -1rem;
+      width: 36px; height: 36px;
+      background: var(--white);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      transition: background var(--transition);
+    }
+    .lightbox-close:hover { background: var(--cobalt-light); }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      width: calc(100% + 5rem);
+      left: -2.5rem;
+      pointer-events: none;
+    }
+
+    .lightbox-nav button {
+      pointer-events: all;
+      width: 40px; height: 40px;
+      background: var(--white);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition);
+    }
+    .lightbox-nav button:hover { background: var(--cobalt-light); }
+
+    .lightbox-counter {
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.82rem;
+      margin-top: 0.75rem;
+    }
+
     @media (max-width: 600px) {
       .image-grid { grid-template-columns: repeat(2, 1fr); }
       .project-header { padding: 1.5rem; }
@@ -311,28 +392,36 @@
         </div>
       </div>
 
-     <!-- SCREENSHOTS -->
+      <!-- SCREENSHOTS -->
       <div style="font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted); margin-bottom:0.75rem;">Screenshots</div>
       <div class="image-grid">
-        <div class="image-item">
+        <div class="image-item" onclick="openLightbox(0)">
           <img src="/portfolio/assets/web_app/financeappss_1.png" alt="Finance App Screenshot 1" />
+          <div class="img-overlay"></div>
         </div>
-        <div class="image-item">
+        <div class="image-item" onclick="openLightbox(1)">
           <img src="/portfolio/assets/web_app/financeappss_2.png" alt="Finance App Screenshot 2" />
+          <div class="img-overlay"></div>
         </div>
-        <div class="image-item">
+        <div class="image-item" onclick="openLightbox(2)">
           <img src="/portfolio/assets/web_app/financeappss_3.png" alt="Finance App Screenshot 3" />
+          <div class="img-overlay"></div>
         </div>
-        <div class="image-item">
+        <div class="image-item" onclick="openLightbox(3)">
           <img src="/portfolio/assets/web_app/financeappss_4.png" alt="Finance App Screenshot 4" />
+          <div class="img-overlay"></div>
         </div>
-        <div class="image-item">
+        <div class="image-item" onclick="openLightbox(4)">
           <img src="/portfolio/assets/web_app/financeappss_5.png" alt="Finance App Screenshot 5" />
+          <div class="img-overlay"></div>
         </div>
-        <div class="image-item">
+        <div class="image-item" onclick="openLightbox(5)">
           <img src="/portfolio/assets/web_app/financeappss_6.png" alt="Finance App Screenshot 6" />
+          <div class="img-overlay"></div>
         </div>
       </div>
+    </div>
+  </div>
 
   <!--
     TEMPLATE: Copy and paste this block to add more projects.
@@ -391,12 +480,71 @@
   </div>
 </footer>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <div id="lightbox-content"></div>
+    <div class="lightbox-nav">
+      <button onclick="shiftLightbox(-1)">←</button>
+      <button onclick="shiftLightbox(1)">→</button>
+    </div>
+    <div class="lightbox-counter" id="lightbox-counter"></div>
+  </div>
+</div>
+
 <script src="/portfolio/main.js"></script>
 <script>
   function toggleProject(id) {
     const card = document.getElementById(id);
     card.classList.toggle('open');
   }
+
+  const images = [
+    '/portfolio/assets/web_app/financeappss_1.png',
+    '/portfolio/assets/web_app/financeappss_2.png',
+    '/portfolio/assets/web_app/financeappss_3.png',
+    '/portfolio/assets/web_app/financeappss_4.png',
+    '/portfolio/assets/web_app/financeappss_5.png',
+    '/portfolio/assets/web_app/financeappss_6.png'
+  ];
+
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    renderLightbox();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function renderLightbox() {
+    document.getElementById('lightbox-content').innerHTML =
+      `<img src="${images[currentIndex]}" class="lightbox-img" alt="Finance App Screenshot ${currentIndex + 1}" />`;
+    document.getElementById('lightbox-counter').textContent =
+      `Finance Tracker App — ${currentIndex + 1} / ${images.length}`;
+  }
+
+  function shiftLightbox(dir) {
+    currentIndex = (currentIndex + dir + images.length) % images.length;
+    renderLightbox();
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeLightboxOutside(e) {
+    if (e.target === document.getElementById('lightbox')) closeLightbox();
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'ArrowRight') shiftLightbox(1);
+    if (e.key === 'ArrowLeft') shiftLightbox(-1);
+    if (e.key === 'Escape') closeLightbox();
+  });
 </script>
 </body>
 </html>
