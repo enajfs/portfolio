@@ -258,19 +258,92 @@
   <h2 class="section-title reveal">My <em>Work</em></h2>
   <p class="section-sub reveal">Click any project to view details, screenshots, and live links.</p>
 
-  <!-- PLACEHOLDER STATE -->
-  <div class="coming-soon-banner reveal">
-    <div style="font-size:2.5rem; margin-bottom:1rem;">🚧</div>
-    <h3>Projects Coming Soon</h3>
-    <p>Real web & app projects will be showcased here as they're completed.<br>Check back soon — good things are being built!</p>
-  </div>
-
-  <!-- 
-    TEMPLATE: Copy and paste this block for each new project you add.
-    Remove the coming-soon-banner above when you have real projects.
-
+  <!-- PROJECT 1: Finance App -->
   <div class="project-card reveal" id="project-1">
     <div class="project-header" onclick="toggleProject('project-1')">
+      <div class="project-header-left">
+        <div class="project-icon">💰</div>
+        <div>
+          <div class="project-title">Finance Tracker App</div>
+          <div class="project-meta">
+            <span class="project-tag">Web App</span>
+            <span class="project-tag">React</span>
+            <span class="project-tag">FastAPI</span>
+            <span class="project-tag">PostgreSQL</span>
+            <span class="project-tag">Personal Finance</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-toggle">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M6 9l6 6 6-6" stroke="#0047AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+    <div class="project-body">
+      <p class="project-desc">A full stack personal finance tracker web app built to help users manage their money smarter. Features include expense tracking, savings goals, transaction history, recurring entries, and CSV export — all behind secure authentication.</p>
+
+      <div class="project-links">
+        <a href="https://finance-app-six-sandy.vercel.app" target="_blank" class="project-btn primary">🔗 View Live App</a>
+        <a href="https://drive.google.com/drive/folders/1Uk82iHRVLIQ6KsoPK7idFbIQyVOd-TcN?usp=sharing" target="_blank" class="project-btn">📁 View More on Google Drive</a>
+      </div>
+
+      <!-- TECH STACK -->
+      <div style="margin-bottom:1.5rem;">
+        <div style="font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted); margin-bottom:0.75rem;">Tech Stack</div>
+        <div style="display:flex; flex-wrap:wrap; gap:0.75rem;">
+          <div style="background:var(--off-white); border:1px solid var(--border); border-radius:0.75rem; padding:0.6rem 1rem;">
+            <div style="font-size:0.7rem; font-weight:700; color:var(--cobalt); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.3rem;">Frontend</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">React · Vite · TypeScript · Clerk · Axios</div>
+          </div>
+          <div style="background:var(--off-white); border:1px solid var(--border); border-radius:0.75rem; padding:0.6rem 1rem;">
+            <div style="font-size:0.7rem; font-weight:700; color:var(--cobalt); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.3rem;">Backend</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">FastAPI · SQLAlchemy · Alembic · Pydantic · Python Jose</div>
+          </div>
+          <div style="background:var(--off-white); border:1px solid var(--border); border-radius:0.75rem; padding:0.6rem 1rem;">
+            <div style="font-size:0.7rem; font-weight:700; color:var(--cobalt); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.3rem;">Database</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">PostgreSQL · Psycopg</div>
+          </div>
+          <div style="background:var(--off-white); border:1px solid var(--border); border-radius:0.75rem; padding:0.6rem 1rem;">
+            <div style="font-size:0.7rem; font-weight:700; color:var(--cobalt); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.3rem;">Deployment</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">Vercel · Railway · Docker · GitHub</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCREENSHOTS -->
+      <div style="font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted); margin-bottom:0.75rem;">Screenshots</div>
+      <div class="image-grid">
+        <div class="image-item">
+          <div class="image-placeholder">
+            <span>📷</span>
+            <span>Screenshot 1</span>
+            <span style="font-size:0.65rem; opacity:0.6;">Upload to assets/web_app/</span>
+          </div>
+        </div>
+        <div class="image-item">
+          <div class="image-placeholder">
+            <span>📷</span>
+            <span>Screenshot 2</span>
+            <span style="font-size:0.65rem; opacity:0.6;">Upload to assets/web_app/</span>
+          </div>
+        </div>
+        <div class="image-item">
+          <div class="image-placeholder">
+            <span>📷</span>
+            <span>Screenshot 3</span>
+            <span style="font-size:0.65rem; opacity:0.6;">Upload to assets/web_app/</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--
+    TEMPLATE: Copy and paste this block to add more projects.
+
+  <div class="project-card reveal" id="project-2">
+    <div class="project-header" onclick="toggleProject('project-2')">
       <div class="project-header-left">
         <div class="project-icon">🌐</div>
         <div>
@@ -289,20 +362,14 @@
       </div>
     </div>
     <div class="project-body">
-      <p class="project-desc">Short description of what was built, for whom, and what problem it solved.</p>
+      <p class="project-desc">Short description of the project.</p>
       <div class="project-links">
         <a href="https://your-live-link.com" target="_blank" class="project-btn primary">🔗 View Live Site</a>
         <a href="https://drive.google.com/..." target="_blank" class="project-btn">📁 View More on Google Drive</a>
       </div>
       <div class="image-grid">
         <div class="image-item">
-          <img src="/portfolio/assets/web_app/project-1-screenshot-1.png" alt="Screenshot 1" />
-        </div>
-        <div class="image-item">
-          <img src="/portfolio/assets/web_app/project-1-screenshot-2.png" alt="Screenshot 2" />
-        </div>
-        <div class="image-item">
-          <img src="/portfolio/assets/web_app/project-1-screenshot-3.png" alt="Screenshot 3" />
+          <img src="/portfolio/assets/web_app/project-2-screenshot-1.png" alt="Screenshot 1" />
         </div>
       </div>
     </div>
