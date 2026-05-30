@@ -6,15 +6,6 @@
   <title>Graphic Design Portfolio — Seño Digital Studio</title>
   <meta name="description" content="Graphic design portfolio — social media designs by Baby Jane Seño of Seño Digital Studio.">
   <link rel="stylesheet" href="/portfolio/styles.css" />
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JZ7YSRFRRG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-JZ7YSRFRRG');
-</script>
   <style>
     .back-btn {
       display: inline-flex;
@@ -29,89 +20,31 @@
     }
     .back-btn:hover { gap: 0.75rem; }
 
-    .project-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 1.5rem;
-      overflow: hidden;
+    .gallery-section { margin-bottom: 4rem; }
+
+    .gallery-category {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
       margin-bottom: 1.5rem;
-      transition: box-shadow var(--transition);
-    }
-    .project-card:hover { box-shadow: var(--shadow); }
-
-    .project-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 2rem 2.5rem;
-      cursor: pointer;
-      user-select: none;
     }
 
-    .project-header-left { display: flex; align-items: center; gap: 1.25rem; }
-
-    .project-icon {
-      width: 52px; height: 52px;
-      background: var(--cobalt-light);
-      border-radius: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      flex-shrink: 0;
-    }
-
-    .project-title {
+    .gallery-category-title {
       font-family: var(--font-heading);
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 700;
       letter-spacing: -0.02em;
       color: var(--text-dark);
-      margin-bottom: 0.25rem;
+      white-space: nowrap;
     }
 
-    .project-meta {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      flex-wrap: wrap;
+    .gallery-category-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
     }
 
-    .project-tag {
-      background: var(--off-white);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.25rem 0.75rem;
-      border-radius: 100px;
-    }
-
-    .project-toggle {
-      width: 36px; height: 36px;
-      background: var(--cobalt-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: background var(--transition);
-    }
-
-    .project-toggle svg { transition: transform var(--transition); }
-    .project-card.open .project-toggle { background: var(--cobalt); }
-    .project-card.open .project-toggle svg { transform: rotate(180deg); }
-    .project-card.open .project-toggle svg path { stroke: white; }
-
-    .project-body {
-      display: none;
-      padding: 1.5rem 2.5rem 2.5rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .project-card.open .project-body { display: block; }
-
-    .drive-btn {
+    .gallery-drive-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
@@ -119,22 +52,22 @@
       border: 1.5px solid var(--border);
       color: var(--cobalt);
       font-weight: 600;
-      font-size: 0.9rem;
-      padding: 0.75rem 1.5rem;
+      font-size: 0.82rem;
+      padding: 0.5rem 1.1rem;
       border-radius: 100px;
       text-decoration: none;
-      margin-bottom: 1.5rem;
+      white-space: nowrap;
       transition: background var(--transition), border-color var(--transition), transform var(--transition);
     }
-    .drive-btn:hover { background: var(--cobalt-light); border-color: var(--cobalt); transform: translateY(-1px); }
+    .gallery-drive-btn:hover { background: var(--cobalt-light); border-color: var(--cobalt); transform: translateY(-1px); }
 
-    .image-grid {
+    .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
     }
 
-    .image-item {
+    .gallery-item {
       aspect-ratio: 4/5;
       border-radius: 0.75rem;
       overflow: hidden;
@@ -144,28 +77,41 @@
       transition: transform var(--transition), box-shadow var(--transition);
     }
 
-    .image-item:hover { transform: scale(1.02); box-shadow: var(--shadow-hover); }
+    .gallery-item:hover { transform: scale(1.02); box-shadow: var(--shadow-hover); }
 
-    .image-item img {
+    .gallery-item img {
       width: 100%; height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .image-item .img-overlay {
+    .gallery-item .img-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(0, 71, 171, 0);
+      background: rgba(128, 0, 32, 0);
       transition: background var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .image-item:hover .img-overlay { background: rgba(0, 71, 171, 0.15); }
+    .gallery-item:hover .img-overlay { background: rgba(128, 0, 32, 0.12); }
 
+    .gallery-item .zoom-icon {
+      opacity: 0;
+      color: var(--white);
+      font-size: 1.25rem;
+      transition: opacity var(--transition);
+    }
+
+    .gallery-item:hover .zoom-icon { opacity: 1; }
+
+    /* LIGHTBOX */
     .lightbox {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(10, 15, 44, 0.92);
+      background: rgba(0, 0, 0, 0.92);
       z-index: 999;
       align-items: center;
       justify-content: center;
@@ -236,10 +182,17 @@
       margin-top: 0.75rem;
     }
 
-    @media (max-width: 600px) {
-      .image-grid { grid-template-columns: repeat(2, 1fr); }
-      .project-header { padding: 1.5rem; }
-      .project-body { padding: 1.5rem; }
+    .lightbox-category {
+      text-align: center;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 700px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -249,18 +202,20 @@
   <a href="/portfolio/index.html" class="nav-logo">Seño Digital Studio</a>
   <ul class="nav-links">
     <li><a href="/portfolio/index.html">Home</a></li>
-<li><a href="/portfolio/ai-automation.html" style="display: none;">AI Automation</a></li>
+    <li><a href="/portfolio/ai-automation.html">AI Automation</a></li>
     <li><a href="/portfolio/virtual-assistance.html">Virtual Assistance</a></li>
     <li><a href="/portfolio/creatives.html">Creatives</a></li>
+    <li><a href="/portfolio/web-app-development.html">Web & App</a></li>
     <li><a href="/portfolio/contact.html" class="nav-cta">Let's Talk</a></li>
   </ul>
   <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu">
   <a href="/portfolio/index.html">Home</a>
- <a href="ai-automation.html" style="display: none;">AI Automation</a>
+  <a href="/portfolio/ai-automation.html">AI Automation</a>
   <a href="/portfolio/virtual-assistance.html">Virtual Assistance</a>
   <a href="/portfolio/creatives.html">Creatives</a>
+  <a href="/portfolio/web-app-development.html">Web & App</a>
   <a href="/portfolio/contact.html" class="nav-cta">Let's Talk</a>
 </div>
 
@@ -277,119 +232,146 @@
       <span class="tool-badge">Social Media Posts</span>
       <span class="tool-badge">Instagram</span>
     </div>
-    <a href="https://drive.google.com/drive/folders/10cDt92djXMUKCZxwWysRN973Xv8mFeis?usp=sharing" target="_blank" class="drive-btn" style="margin-top:1.5rem;">
-      View All on Google Drive
-    </a>
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- GALLERY -->
 <section style="background: var(--off-white);">
   <div class="section-label reveal">Projects</div>
   <h2 class="section-title reveal">My <em>Work</em></h2>
-  <p class="section-sub reveal">Click any project to view the designs. All images are watermarked.</p>
+  <p class="section-sub reveal">Click any image to view it fullscreen. All images are watermarked.</p>
 
-  <!-- PROJECT 1 -->
-  <div class="project-card reveal" id="project-1">
-    <div class="project-header" onclick="toggleProject('project-1')">
-      <div class="project-header-left">
-        <div class="project-icon">🌟</div>
-        <div>
-          <div class="project-title">Motivational Quote Cards</div>
-          <div class="project-meta">
-            <span class="project-tag">Life Coach</span>
-            <span class="project-tag">Canva</span>
-            <span class="project-tag">5 slides</span>
-            <span class="project-tag">Instagram Post</span>
-          </div>
-        </div>
-      </div>
-      <div class="project-toggle">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-          <path d="M6 9l6 6 6-6" stroke="#0047AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
+  <!-- CATEGORY 1: Motivational Quote Cards -->
+  <div class="gallery-section reveal">
+    <div class="gallery-category">
+      <span class="gallery-category-title">Motivational Quote Cards</span>
+      <div class="gallery-category-line"></div>
+      <a href="https://drive.google.com/drive/folders/10cDt92djXMUKCZxwWysRN973Xv8mFeis?usp=sharing" target="_blank" class="gallery-drive-btn">
+        View More on Google Drive
+      </a>
     </div>
-    <div class="project-body">
-      <div class="image-grid">
-        <div class="image-item" onclick="openLightbox(0, 'project1')">
-          <img src="/portfolio/assets/graphic_design/quote-card-1.png" alt="Quote Card 1" />
-          <div class="img-overlay"></div>
-        </div>
-        <div class="image-item" onclick="openLightbox(1, 'project1')">
-          <img src="/portfolio/assets/graphic_design/quote-card-2.png" alt="Quote Card 2" />
-          <div class="img-overlay"></div>
-        </div>
-        <div class="image-item" onclick="openLightbox(2, 'project1')">
-          <img src="/portfolio/assets/graphic_design/quote-card-3.png" alt="Quote Card 3" />
-          <div class="img-overlay"></div>
-        </div>
-        <div class="image-item" onclick="openLightbox(3, 'project1')">
-          <img src="/portfolio/assets/graphic_design/quote-card-4.png" alt="Quote Card 4" />
-          <div class="img-overlay"></div>
-        </div>
-        <div class="image-item" onclick="openLightbox(4, 'project1')">
-          <img src="/portfolio/assets/graphic_design/quote-card-5.png" alt="Quote Card 5" />
-          <div class="img-overlay"></div>
-        </div>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox(0, 'project1')">
+        <img src="/portfolio/assets/graphic_design/quote-card-1.png" alt="Quote Card 1" />
+        <div class="img-overlay"><span class="zoom-icon">⊕</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(1, 'project1')">
+        <img src="/portfolio/assets/graphic_design/quote-card-2.png" alt="Quote Card 2" />
+        <div class="img-overlay"><span class="zoom-icon">⊕</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(2, 'project1')">
+        <img src="/portfolio/assets/graphic_design/quote-card-3.png" alt="Quote Card 3" />
+        <div class="img-overlay"><span class="zoom-icon">⊕</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(3, 'project1')">
+        <img src="/portfolio/assets/graphic_design/quote-card-4.png" alt="Quote Card 4" />
+        <div class="img-overlay"><span class="zoom-icon">⊕</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(4, 'project1')">
+        <img src="/portfolio/assets/graphic_design/quote-card-5.png" alt="Quote Card 5" />
+        <div class="img-overlay"><span class="zoom-icon">⊕</span></div>
       </div>
     </div>
   </div>
 
-  <!-- PROJECT 2 -->
-  <div class="project-card reveal" id="project-2">
-    <div class="project-header" onclick="toggleProject('project-2')">
-      <div class="project-header-left">
-        <div class="project-icon">✨</div>
-        <div>
-          <div class="project-title">New Arrival Instagram Carousel</div>
-          <div class="project-meta">
-            <span class="project-tag">Skincare</span>
-            <span class="project-tag">Canva</span>
-            <span class="project-tag">7 slides</span>
-            <span class="project-tag">Instagram Carousel</span>
-          </div>
-        </div>
-      </div>
-      <div class="project-toggle">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-          <path d="M6 9l6 6 6-6" stroke="#0047AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
+  <!-- CATEGORY 2: New Arrival Instagram Carousel -->
+  <div class="gallery-section reveal">
+    <div class="gallery-category">
+      <span class="gallery-category-title">New Arrival Instagram Carousel</span>
+      <div class="gallery-category-line"></div>
+      <a href="https://drive.google.com/drive/folders/10cDt92djXMUKCZxwWysRN973Xv8mFeis?usp=sharing" target="_blank" class="gallery-drive-btn">
+        View More on Google Drive
+      </a>
     </div>
-    <div class="project-body">
-      <div class="image-grid">
-        <div class="image-item" onclick="openLightbox(0, 'project2')">
-          <img src="/portfolio/assets/graphic_design/new-arrival-1.png" alt="New Arrival 1" />
-          <div class="img-overlay"></div>
-        </div>
-        <div class="image-item" onclick="openLightbox(1, 'project2')">
-          <img src="/portfolio/assets/graphic_design/new-arrival-2.png" alt="New Arrival 2" />
-          <div class="img-overlay"></div>
-        </div>
-        <div class="image-item" onclick="openLightbox(2, 'project2')">
-          <img src="/portfolio/assets/graphic_design/new-arrival-3.png" alt="New Arrival 3" />
-          <div class="img-overlay"></div>
-        </div>
-        <div class="image-item" onclick="openLightbox(3, 'project2')">
-          <img src="/portfolio/assets/graphic_design/new-arrival-4.png" alt="New Arrival 4" />
-          <div class="img-overlay"></div>
-        </div>
-        <div class="image-item" onclick="openLightbox(4, 'project2')">
-          <img src="/portfolio/assets/graphic_design/new-arrival-5.png" alt="New Arrival 5" />
-          <div class="img-overlay"></div>
-        </div>
-        <div class="image-item" onclick="openLightbox(5, 'project2')">
-          <img src="/portfolio/assets/graphic_design/new-arrival-6.png" alt="New Arrival 6" />
-          <div class="img-overlay"></div>
-        </div>
-        <div class="image-item" onclick="openLightbox(6, 'project2')">
-          <img src="/portfolio/assets/graphic_design/new-arrival-7.png" alt="New Arrival 7" />
-          <div class="img-overlay"></div>
-        </div>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox(0, 'project2')">
+        <img src="/portfolio/assets/graphic_design/new-arrival-1.png" alt="New Arrival 1" />
+        <div class="img-overlay"><span class="zoom-icon">⊕</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(1, 'project2')">
+        <img src="/portfolio/assets/graphic_design/new-arrival-2.png" alt="New Arrival 2" />
+        <div class="img-overlay"><span class="zoom-icon">⊕</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(2, 'project2')">
+        <img src="/portfolio/assets/graphic_design/new-arrival-3.png" alt="New Arrival 3" />
+        <div class="img-overlay"><span class="zoom-icon">⊕</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(3, 'project2')">
+        <img src="/portfolio/assets/graphic_design/new-arrival-4.png" alt="New Arrival 4" />
+        <div class="img-overlay"><span class="zoom-icon">⊕</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(4, 'project2')">
+        <img src="/portfolio/assets/graphic_design/new-arrival-5.png" alt="New Arrival 5" />
+        <div class="img-overlay"><span class="zoom-icon">⊕</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(5, 'project2')">
+        <img src="/portfolio/assets/graphic_design/new-arrival-6.png" alt="New Arrival 6" />
+        <div class="img-overlay"><span class="zoom-icon">⊕</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(6, 'project2')">
+        <img src="/portfolio/assets/graphic_design/new-arrival-7.png" alt="New Arrival 7" />
+        <div class="img-overlay"><span class="zoom-icon">⊕</span></div>
       </div>
     </div>
   </div>
+
+  <!-- CATEGORY 3: LinkedIn Posts — SMB Integrator -->
+  <div class="gallery-section reveal">
+    <div class="gallery-category">
+      <span class="gallery-category-title">LinkedIn Posts — SMB Integrator</span>
+      <div class="gallery-category-line"></div>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox(0, 'project3')">
+        <img src="/portfolio/assets/graphic_design/smb1.png" alt="SMB LinkedIn Post 1" />
+        <div class="img-overlay"><span class="zoom-icon">⊕</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(1, 'project3')">
+        <img src="/portfolio/assets/graphic_design/smb2.png" alt="SMB LinkedIn Post 2" />
+        <div class="img-overlay"><span class="zoom-icon">⊕</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(2, 'project3')">
+        <img src="/portfolio/assets/graphic_design/smb3.png" alt="SMB LinkedIn Post 3" />
+        <div class="img-overlay"><span class="zoom-icon">⊕</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(3, 'project3')">
+        <img src="/portfolio/assets/graphic_design/smb4.png" alt="SMB LinkedIn Post 4" />
+        <div class="img-overlay"><span class="zoom-icon">⊕</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(4, 'project3')">
+        <img src="/portfolio/assets/graphic_design/smb5.png" alt="SMB LinkedIn Post 5" />
+        <div class="img-overlay"><span class="zoom-icon">⊕</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!--
+    TEMPLATE: Copy this block to add a new project category.
+
+  <div class="gallery-section reveal">
+    <div class="gallery-category">
+      <span class="gallery-category-title">Project Name Here</span>
+      <div class="gallery-category-line"></div>
+      <a href="YOUR_GOOGLE_DRIVE_LINK" target="_blank" class="gallery-drive-btn">
+        View More on Google Drive
+      </a>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox(0, 'project3')">
+        <img src="/portfolio/assets/graphic_design/your-image-1.png" alt="Image 1" />
+        <div class="img-overlay"><span class="zoom-icon">⊕</span></div>
+      </div>
+    </div>
+  </div>
+
+  Also add to the projects object in the script below:
+  project3: {
+    name: 'Project Name Here',
+    images: [
+      '/portfolio/assets/graphic_design/your-image-1.png',
+    ]
+  }
+  -->
 
 </section>
 
@@ -421,42 +403,39 @@
       <button onclick="shiftLightbox(1)">→</button>
     </div>
     <div class="lightbox-counter" id="lightbox-counter"></div>
+    <div class="lightbox-category" id="lightbox-category"></div>
   </div>
 </div>
 
 <script src="/portfolio/main.js"></script>
 <script>
-  function toggleProject(id) {
-    const card = document.getElementById(id);
-    card.classList.toggle('open');
-  }
+  const projects = {
+    project1: {
+      name: 'Motivational Quote Cards',
+      images: [
+        '/portfolio/assets/graphic_design/quote-card-1.png',
+        '/portfolio/assets/graphic_design/quote-card-2.png',
+        '/portfolio/assets/graphic_design/quote-card-3.png',
+        '/portfolio/assets/graphic_design/quote-card-4.png',
+        '/portfolio/assets/graphic_design/quote-card-5.png'
+      ]
+    },
+    project2: {
+      name: 'New Arrival Instagram Carousel',
+      images: [
+        '/portfolio/assets/graphic_design/new-arrival-1.png',
+        '/portfolio/assets/graphic_design/new-arrival-2.png',
+        '/portfolio/assets/graphic_design/new-arrival-3.png',
+        '/portfolio/assets/graphic_design/new-arrival-4.png',
+        '/portfolio/assets/graphic_design/new-arrival-5.png',
+        '/portfolio/assets/graphic_design/new-arrival-6.png',
+        '/portfolio/assets/graphic_design/new-arrival-7.png'
+      ]
+    }
+  };
 
   let currentIndex = 0;
   let currentProject = '';
-
-  const projects = {
-    project1: [
-      '/portfolio/assets/graphic_design/quote-card-1.png',
-      '/portfolio/assets/graphic_design/quote-card-2.png',
-      '/portfolio/assets/graphic_design/quote-card-3.png',
-      '/portfolio/assets/graphic_design/quote-card-4.png',
-      '/portfolio/assets/graphic_design/quote-card-5.png'
-    ],
-    project2: [
-      '/portfolio/assets/graphic_design/new-arrival-1.png',
-      '/portfolio/assets/graphic_design/new-arrival-2.png',
-      '/portfolio/assets/graphic_design/new-arrival-3.png',
-      '/portfolio/assets/graphic_design/new-arrival-4.png',
-      '/portfolio/assets/graphic_design/new-arrival-5.png',
-      '/portfolio/assets/graphic_design/new-arrival-6.png',
-      '/portfolio/assets/graphic_design/new-arrival-7.png'
-    ]
-  };
-
-  const projectNames = {
-    project1: 'Motivational Quote Cards',
-    project2: 'New Arrival Campaign'
-  };
 
   function openLightbox(index, project) {
     currentIndex = index;
@@ -467,17 +446,19 @@
   }
 
   function renderLightbox() {
-    const images = projects[currentProject];
-    const total = images.length;
-    const src = images[currentIndex];
-    const content = document.getElementById('lightbox-content');
-    content.innerHTML = `<img src="${src}" class="lightbox-img" alt="Project image ${currentIndex + 1}" />`;
+    const project = projects[currentProject];
+    const total = project.images.length;
+    const src = project.images[currentIndex];
+    document.getElementById('lightbox-content').innerHTML =
+      `<img src="${src}" class="lightbox-img" alt="Design ${currentIndex + 1}" />`;
     document.getElementById('lightbox-counter').textContent =
-      `${projectNames[currentProject]} — ${currentIndex + 1} / ${total}`;
+      `${currentIndex + 1} / ${total}`;
+    document.getElementById('lightbox-category').textContent =
+      project.name;
   }
 
   function shiftLightbox(dir) {
-    const total = projects[currentProject].length;
+    const total = projects[currentProject].images.length;
     currentIndex = (currentIndex + dir + total) % total;
     renderLightbox();
   }
